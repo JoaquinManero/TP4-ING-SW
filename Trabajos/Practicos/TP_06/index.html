@@ -1,0 +1,158 @@
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Validación de Formulario con Javascript</title>
+	<link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <header>
+        <div class="jumbotron">
+            <h1>Deliver Eats</h1>
+            <h4> Servicio de Delivery de "lo que sea"</h3>
+        </div>
+    </header>
+	<main>
+		<form action="https://jkorpela.fi/cgi-bin/echo.cgi" method="post " class="formulario" id="formulario">
+			<!-- Grupo: Calle -->
+			<div class="formulario__grupo" id="grupo__calle">
+				<label for="calle" class="formulario__label">Calle</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="calle" id="calle" placeholder="Av.Rafael Nuñez">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<!--<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>-->
+			</div>
+
+			<!-- Grupo: NumeroCalle -->
+			<div class="formulario__grupo" id="grupo__numeroCalle">
+				<label for="numeroCalle" class="formulario__label">Número de la calle</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="numeroCalle" id="numeroCalle" placeholder="2541">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+                <!--<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>-->
+			</div>
+
+			<!-- Grupo: Ciudad -->
+			<div class="formulario__grupo" id="grupo__ciudad">
+				<label for="ciudad" class="formulario__label">Ciudad</label>
+				<div class="formulario__grupo-comboBox">
+					<select name="Ciudad" class="formulario__input">
+                        <option value="" disabled>Seleccione una opción</option>
+                        <option value="Cordoba">Córdoba, Córdoba</option>
+                        <option value="Villa Allende">Córdoba, Villa Allende</option>
+                        <option value="Unquillo">Córdoba, Unquillo</option>
+                        <option value="LaCalera">Córdoba, La Calera</option>
+                        <option value="Mendiolaza">Córdoba, Mendiolaza</option>
+                        <option value="Malagueño">Córdoba, Malagueño</option>
+                      </select>
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<!--<p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 dígitos.</p>-->
+			</div>
+
+			<!-- Grupo: Referencia Opcional -->
+			<div class="formulario__grupo" id="grupo__referenciaOpcional">
+				<label for="referencia" class="formulario__label">Referencia</label>
+				<div class="formulario__grupo-input">
+					<input type="referencia" class="formulario__input" name="referencia" id="referencia" placeholder="Ej: Casa de portón negro">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<!-- <p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>-->
+			</div>
+
+			<!-- Grupo: Forma de Pago -->
+			<div class="formulario__grupo" id="grupo__formaDePago">
+				<label for="formaDePago" class="formulario__label">Forma de Pago</label>
+				<div class="formulario__grupo-comboBox">
+					<select name="Ciudad" class="formulario__input">
+                        <option value="" disabled>Seleccione una opción</option>
+                        <option value="Efectivo">Efectivo</option>
+                        <option value="Credito/Debito">Tarjeta de Crédito/Débito</option>
+                      </select>
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<!-- <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>-->
+			</div>
+
+			<!-- Grupo: Monto, si elige como forma de pago efectivo -->
+			<div class="formulario__grupo" id="grupo__monto">
+				<label for="monto" class="formulario__label">Monto</label>
+				<div class="formulario__grupo-input">
+					<input type="number" class="formulario__input" name="monto" id="monto" placeholder="$">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
+			</div>
+
+            <!-- Grupo: Nro de Tarjeta, si elige como forma de pago Credito/Debito -->
+			<div class="formulario__grupo" id="grupo__nroTarjeta">
+				<label for="nroTarjeta" class="formulario__label">Número de Tarjeta</label>
+				<div class="formulario__grupo-input">
+					<input type="number" class="formulario__input" name="nroTarjeta" id="nroTarjeta" placeholder="Ej: 0000 1111 2222 3333">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
+			</div>
+
+            <!-- Grupo: Nombre y apellido del titular de la Tarjeta, si elige como forma de pago Credito/Debito -->
+			<div class="formulario__grupo" id="grupo__nombre_apellido_titular">
+				<label for="nombre_apellido_titular" class="formulario__label">Nombre y apellido del titular</label>
+				<div class="formulario__grupo-input">
+					<input type="name" class="formulario__input" name="nombre_apellido_titular" id="nombre_apellido_titular" placeholder="Ej: Joaquin Manero">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
+			</div>
+
+            <!-- Grupo: Fecha de vencimiento de la Tarjeta, si elige como forma de pago Credito/Debito -->
+			<div class="formulario__grupo" id="fechaVto">
+				<label for="fechaVto" class="formulario__label">Fecha de vencimiento</label>
+				<div class="formulario__grupo-input">
+					<input type="date" class="formulario__input" name="fechaVto" id="fechaVto">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
+			</div>
+
+            <!-- Grupo: CVC de la Tarjeta, si elige como forma de pago Credito/Debito -->
+			<div class="formulario__grupo" id="CVC">
+				<label for="CVC" class="formulario__label">Código de seguridad (CVC)</label>
+				<div class="formulario__grupo-input">
+					<input type="number" class="formulario__input" name="CVC" id="CVC">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
+			</div>
+
+			<!-- Grupo: Terminos y Condiciones -->
+			<div class="formulario__grupo" id="grupo__terminos">
+				<label class="formulario__label">
+					<input class="formulario__checkbox" type="checkbox" name="terminos" id="terminos">
+					Acepto los Terminos y Condiciones
+				</label>
+			</div>
+
+			<div class="formulario__mensaje" id="formulario__mensaje">
+				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+			</div>
+
+			<div class="formulario__grupo formulario__grupo-btn-enviar">
+				<button type="submit" class="formulario__btn">Registrar</button>
+				<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
+			</div>
+		</form>
+	</main>
+    <footer>
+        <h5>Disfruteeeeee su pedido de mierda!!</h5>
+    </footer>
+
+	<script src="js/formulario.js"></script>
+	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+</body>
+</html>
