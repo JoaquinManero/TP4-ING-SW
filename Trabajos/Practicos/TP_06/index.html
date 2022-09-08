@@ -1,29 +1,111 @@
+<html lang="es">
 
-<html lang="en">
 <head>
+
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Validación de Formulario con Javascript</title>
 	<link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 	<link rel="stylesheet" href="style.css">
-    
+
 </head>
+
 <body>
-    <header>
-        <div class="jumbotron">
-            <h1>Deliver Eats</h1>
-            <h4> Servicio de Delivery de "lo que sea"</h3>
-        </div>
-    </header>
+	<header>
+		<div>
+			<h1> Deliver Eats </h1>
+			<h3> Servicio de Delivery de "lo que sea"</h3>
+		</div>
+	</header>
+
 	<main>
 		<form action="https://jkorpela.fi/cgi-bin/echo.cgi" method="post " class="formulario" id="formulario">
+
+
+
+			<!-- -------------------- PRODUCTO -------------------- -->
+			<h2> Producto </h2>
+			<div></div>
+
+			<!-- Grupo: Nombre Producto -->
+			<div class="formulario__grupo" id="grupo__producto">
+				<label for="nombreProducto" class="formulario__label">Nombre</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="nombreProducto" id="nombreProducto"
+						placeholder="Nombre del producto">
+				</div>
+			</div>
+
+			<!-- Grupo: Imagen Producto -->
+			<div class="formulario__grupo" id="grupo__imagen">
+				<label for="imagenProducto" class="formulario__label">Imagen</label>
+				<div class="input-group">
+					<input type="file" class="form-control" id="imagenProducto" accept=".jpg"> <!-- JPG, 5MB Max -->
+				</div>
+			</div>
+
+
+
+			<!-- -------------------- COMERCIO -------------------- -->
+			<h2> Comercio </h2>
+			<div></div>
+
+			<!-- Grupo: Calle -->
+			<div class="formulario__grupo" id="grupo__calle__com">
+				<label for="calle__com" class="formulario__label">Calle</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="calle__com" id="calle__com" placeholder="...">
+				</div>
+			</div>
+
+			<!-- Grupo: NumeroCalle -->
+			<div class="formulario__grupo" id="grupo__numeroCalle__com">
+				<label for="numeroCalle__com" class="formulario__label">Número de la calle</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="numeroCalle__com" id="numeroCalle__com" placeholder="...">
+				</div>
+			</div>
+
+			<!-- Grupo: Ciudad -->
+			<div class="formulario__grupo" id="grupo__ciudad__com">
+				<label for="ciudad__com" class="formulario__label">Ciudad</label>
+				<div class="formulario__grupo-comboBox">
+					<select name="ciudad__com" class="formulario__input">
+						<option value="" disabled>Seleccione una opción</option>
+						<option value="Cordoba">Córdoba, Córdoba</option>
+						<option value="Villa Allende">Córdoba, Villa Allende</option>
+						<option value="Unquillo">Córdoba, Unquillo</option>
+						<option value="LaCalera">Córdoba, La Calera</option>
+						<option value="Mendiolaza">Córdoba, Mendiolaza</option>
+						<option value="Malagueño">Córdoba, Malagueño</option>
+					</select>
+				</div>
+			</div>
+
+			<!-- Grupo: Referencia Opcional -->
+			<div class="formulario__grupo" id="grupo__referenciaOpcional__com">
+				<label for="referencia__com" class="formulario__label">Referencia</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="referencia__com" id="referencia__com"
+						placeholder="...">
+				</div>
+			</div>
+
+
+
+			<!-- -------------------- ENVÍO -------------------- -->
+			<h2> Envío </h2>
+			<div></div>
+
 			<!-- Grupo: Calle -->
 			<div class="formulario__grupo" id="grupo__calle">
 				<label for="calle" class="formulario__label">Calle</label>
 				<div class="formulario__grupo-input">
 					<input type="text" class="formulario__input" name="calle" id="calle" placeholder="Av.Rafael Nuñez">
-					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+					<i class="formulario__validacion-estado fas fa-times-circle">a</i>
 				</div>
 				<!--<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>-->
 			</div>
@@ -35,7 +117,7 @@
 					<input type="text" class="formulario__input" name="numeroCalle" id="numeroCalle" placeholder="2541">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
-                <!--<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>-->
+				<!--<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>-->
 			</div>
 
 			<!-- Grupo: Ciudad -->
@@ -43,14 +125,14 @@
 				<label for="ciudad" class="formulario__label">Ciudad</label>
 				<div class="formulario__grupo-comboBox">
 					<select name="Ciudad" class="formulario__input">
-                        <option value="" disabled>Seleccione una opción</option>
-                        <option value="Cordoba">Córdoba, Córdoba</option>
-                        <option value="Villa Allende">Córdoba, Villa Allende</option>
-                        <option value="Unquillo">Córdoba, Unquillo</option>
-                        <option value="LaCalera">Córdoba, La Calera</option>
-                        <option value="Mendiolaza">Córdoba, Mendiolaza</option>
-                        <option value="Malagueño">Córdoba, Malagueño</option>
-                      </select>
+						<option value="" disabled>Seleccione una opción</option>
+						<option value="Cordoba">Córdoba, Córdoba</option>
+						<option value="Villa Allende">Córdoba, Villa Allende</option>
+						<option value="Unquillo">Córdoba, Unquillo</option>
+						<option value="LaCalera">Córdoba, La Calera</option>
+						<option value="Mendiolaza">Córdoba, Mendiolaza</option>
+						<option value="Malagueño">Córdoba, Malagueño</option>
+					</select>
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<!--<p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 dígitos.</p>-->
@@ -60,21 +142,60 @@
 			<div class="formulario__grupo" id="grupo__referenciaOpcional">
 				<label for="referencia" class="formulario__label">Referencia</label>
 				<div class="formulario__grupo-input">
-					<input type="referencia" class="formulario__input" name="referencia" id="referencia" placeholder="Ej: Casa de portón negro">
+					<input type="text" class="formulario__input" name="referencia" id="referencia"
+						placeholder="Ej: Casa de portón negro">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<!-- <p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>-->
 			</div>
+
+
+
+			<!-- -------------------- RECIBIMIENTO -------------------- -->
+			<h2> Recibimiento </h2>
+			<div></div>
+
+			<!-- Grupo: Tipo Recibimiento -->
+			<div class="formulario__grupo" id="grupo__recibimiento">
+				<label for="recibimiento" class="formulario__label">Tipo Recibimiento</label>
+				<div class="formulario__grupo-comboBox">
+					<select name="recibimiento" class="formulario__input">
+						<option value="" hidden selected disabled>Seleccione una opción</option>
+						<option value="antes-posible">Lo antes posible</option>
+						<option value="fecha-hora">Indicar fecha y hora</option>
+					</select>
+				</div>
+			</div>
+
+			<!-- Grupo: Fecha y Hora-->
+			<div class="formulario__grupo" id="fecha-hora-rec">
+				<label for="fecha-hora" class="formulario__label">Fecha y Hora</label>
+				<div class="formulario__grupo-input">
+					<input type="datetime-local" class="formulario__input" name="fecha-hora" id="fecha-hora">
+				</div>
+			</div>
+
+
+
+			<!-- -------------------- TOTAL A PAGAR -------------------- -->
+			<h2> Total a pagar: </h2>
+			<h2 id="total-pago"> $ - </h2>
+
+
+
+			<!-- -------------------- PAGO -------------------- -->
+			<h2> Pago </h2>
+			<div></div>
 
 			<!-- Grupo: Forma de Pago -->
 			<div class="formulario__grupo" id="grupo__formaDePago">
 				<label for="formaDePago" class="formulario__label">Forma de Pago</label>
 				<div class="formulario__grupo-comboBox">
 					<select name="Ciudad" class="formulario__input">
-                        <option value="" disabled>Seleccione una opción</option>
-                        <option value="Efectivo">Efectivo</option>
-                        <option value="Credito/Debito">Tarjeta de Crédito/Débito</option>
-                      </select>
+						<option value="" disabled>Seleccione una opción</option>
+						<option value="Efectivo">Efectivo</option>
+						<option value="Credito/Debito">Tarjeta de Crédito/Débito</option>
+					</select>
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<!-- <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>-->
@@ -90,27 +211,29 @@
 				<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
 			</div>
 
-            <!-- Grupo: Nro de Tarjeta, si elige como forma de pago Credito/Debito -->
+			<!-- Grupo: Nro de Tarjeta, si elige como forma de pago Credito/Debito -->
 			<div class="formulario__grupo" id="grupo__nroTarjeta">
 				<label for="nroTarjeta" class="formulario__label">Número de Tarjeta</label>
 				<div class="formulario__grupo-input">
-					<input type="number" class="formulario__input" name="nroTarjeta" id="nroTarjeta" placeholder="Ej: 0000 1111 2222 3333">
+					<input type="number" class="formulario__input" name="nroTarjeta" id="nroTarjeta"
+						placeholder="Ej: 0000 1111 2222 3333">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
 			</div>
 
-            <!-- Grupo: Nombre y apellido del titular de la Tarjeta, si elige como forma de pago Credito/Debito -->
+			<!-- Grupo: Nombre y apellido del titular de la Tarjeta, si elige como forma de pago Credito/Debito -->
 			<div class="formulario__grupo" id="grupo__nombre_apellido_titular">
 				<label for="nombre_apellido_titular" class="formulario__label">Nombre y apellido del titular</label>
 				<div class="formulario__grupo-input">
-					<input type="name" class="formulario__input" name="nombre_apellido_titular" id="nombre_apellido_titular" placeholder="Ej: Joaquin Manero">
+					<input type="name" class="formulario__input" name="nombre_apellido_titular"
+						id="nombre_apellido_titular" placeholder="Ej: Joaquin Manero">
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
 				<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
 			</div>
 
-            <!-- Grupo: Fecha de vencimiento de la Tarjeta, si elige como forma de pago Credito/Debito -->
+			<!-- Grupo: Fecha de vencimiento de la Tarjeta, si elige como forma de pago Credito/Debito -->
 			<div class="formulario__grupo" id="fechaVto">
 				<label for="fechaVto" class="formulario__label">Fecha de vencimiento</label>
 				<div class="formulario__grupo-input">
@@ -120,7 +243,7 @@
 				<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
 			</div>
 
-            <!-- Grupo: CVC de la Tarjeta, si elige como forma de pago Credito/Debito -->
+			<!-- Grupo: CVC de la Tarjeta, si elige como forma de pago Credito/Debito -->
 			<div class="formulario__grupo" id="CVC">
 				<label for="CVC" class="formulario__label">Código de seguridad (CVC)</label>
 				<div class="formulario__grupo-input">
@@ -130,29 +253,41 @@
 				<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
 			</div>
 
+			<!-- -------------------- FIN -------------------- -->
+
+
 			<!-- Grupo: Terminos y Condiciones -->
-			<div class="formulario__grupo" id="grupo__terminos">
+			<!-- <div class="formulario__grupo" id="grupo__terminos">
 				<label class="formulario__label">
 					<input class="formulario__checkbox" type="checkbox" name="terminos" id="terminos">
 					Acepto los Terminos y Condiciones
 				</label>
-			</div>
+			</div> -->
 
 			<div class="formulario__mensaje" id="formulario__mensaje">
-				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario
+					correctamente. </p>
 			</div>
 
 			<div class="formulario__grupo formulario__grupo-btn-enviar">
-				<button type="submit" class="formulario__btn">Registrar</button>
+				<button type="submit" class="formulario__btn">Hacer pedido</button>
 				<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
 			</div>
+
+
 		</form>
 	</main>
-    <footer>
-        <h5>Disfruteeeeee su pedido de mierda!!</h5>
-    </footer>
 
-	<script src="js/formulario.js"></script>
+	<footer>
+		<h5> DeliverEats © 2022 </h5>
+	</footer>
+
+	<script src="script.js"></script>
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+		crossorigin="anonymous"></script>
+
 </body>
+
 </html>
