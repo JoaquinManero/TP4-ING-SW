@@ -76,6 +76,7 @@ h2{
 	font-size: 12px;
 	margin-bottom: 0;
 	display: none;
+	color:red;
 }
 
 .formulario__input-error-activo {

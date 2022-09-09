@@ -1,16 +1,3 @@
-
-document.getElementById('imagenProducto').onchange = function(e){
-    let reader = new FileReader();
-    reader.readAsDataURL(e.target.files[0]);
-    reader.onload = function(){
-        let preview = document.getElementById('preview');
-        imagen = document.createElement('img');
-        imagen.src = reader.result;
-        imagen.style.width = 300;
-        preview.append(imagen);
-    }
-}
-
 const cboFormaPago = document.querySelector("#cboFormaPago");
 const monto = document.querySelector("[name=monto]");
 const nroTarjeta = document.querySelector("[name=nroTarjeta]");
@@ -38,4 +25,77 @@ cboFormaPago.addEventListener("change", () => {
         divFechaVto.style.display = 'block'
         divCVC.style.display = 'block'
     }
-  });
+});
+
+// Calle no vacía y texto
+// Numero no vacío y texto
+// Ciudad seleccionada
+
+let btn_pedido = document.getElementById("pedido");
+btn_pedido.addEventListener("click", validar_recibimiento);
+
+function hacer_pedido () {
+    if (validar_domicilio() ){
+        console.log("Correcto domicilio");
+    }
+}
+
+function validar_domicilio(){
+    let calle = document.getElementById("calle");
+    let nro_calle = document.getElementById("numeroCalle");
+    let ciudad = document.getElementById("cboCiudad");
+
+    // Error Calle
+    let error_calle = document.getElementById("error-calle");
+    if (calle.value == "" ||  !isNaN(calle.value)) {
+        error_calle.style.display = "block";
+        return false;
+    }
+    else {
+        error_calle.style.display = "none";
+    }
+
+    // Error Nro Calle
+    let error_nro_calle = document.getElementById("error-nro-calle");
+    if (nro_calle.value == ""){
+        error_nro_calle.style.display = "block";
+        return false;
+    }
+    else {
+        error_nro_calle.style.display = "none";
+    }
+
+    // Error Ciudad
+    let error_ciudad = document.getElementById("error-ciudad");
+    if (ciudad.value == ""){
+        error_ciudad.style.display = "block";
+        return false;
+    }
+    else {
+        error_ciudad.style.display = "none";
+    }
+
+    return true;
+
+}
+
+function validar_recibimiento(){
+    let recib = document.getElementById("cboRecibimiento");
+    let fecha_hora = document.getElementById("fecha-hora");
+
+    // Error Recibimiento
+    let error_recib = document.getElementById("error-recib");
+    if (recib.value == ""){
+        error_recib.style.display = "block";
+        return false;
+    }
+    else {
+        error_recib.style.display = "none";
+    }
+    
+    
+}
+
+
+
+
