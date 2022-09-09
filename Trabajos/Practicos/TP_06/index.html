@@ -1,7 +1,6 @@
 <html lang="es">
 
 <head>
-
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Validación de Formulario con Javascript</title>
@@ -16,18 +15,18 @@
 <body>
 	<header>
 		<div>
-			<h1> Deliver Eats </h1>
-			<h3> Servicio de Delivery de "lo que sea"</h3>
+			<h2> Deliver Eats </h2>
+			<h4> Servicio de Delivery de "lo que sea"</h4>
 		</div>
+		<script src="js/script.js"></script>
 	</header>
 
 	<main>
 		<form action="https://jkorpela.fi/cgi-bin/echo.cgi" method="post " class="formulario" id="formulario">
 
 
-
 			<!-- -------------------- PRODUCTO -------------------- -->
-			<h2> Producto </h2>
+			<h4> <u> <b> <i> Producto </i> </b> </u> </h4>
 			<div></div>
 
 			<!-- Grupo: Nombre Producto -->
@@ -43,21 +42,21 @@
 			<div class="formulario__grupo" id="grupo__imagen">
 				<label for="imagenProducto" class="formulario__label">Imagen</label>
 				<div class="input-group">
-					<input type="file" class="form-control" id="imagenProducto" accept=".jpg"> <!-- JPG, 5MB Max -->
+					<input type="file" name="file" class="form-control" id="imagenProducto" accept=".jpg"> <!-- JPG, 5MB Max -->
 				</div>
-			</div>
+			</div> 
 
-
+			
 
 			<!-- -------------------- COMERCIO -------------------- -->
-			<h2> Comercio </h2>
+			<h4> <u> <b> <i> Comercio </i> </b> </u> </h4>
 			<div></div>
 
 			<!-- Grupo: Calle -->
 			<div class="formulario__grupo" id="grupo__calle__com">
 				<label for="calle__com" class="formulario__label">Calle</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="calle__com" id="calle__com" placeholder="...">
+					<input type="text" class="formulario__input" name="calle__com" id="calle__com" placeholder="Ej: Avenida Colón">
 				</div>
 			</div>
 
@@ -65,7 +64,7 @@
 			<div class="formulario__grupo" id="grupo__numeroCalle__com">
 				<label for="numeroCalle__com" class="formulario__label">Número de la calle</label>
 				<div class="formulario__grupo-input">
-					<input type="text" class="formulario__input" name="numeroCalle__com" id="numeroCalle__com" placeholder="...">
+					<input type="text" class="formulario__input" name="numeroCalle__com" id="numeroCalle__com" placeholder="2641">
 				</div>
 			</div>
 
@@ -90,14 +89,13 @@
 				<label for="referencia__com" class="formulario__label">Referencia</label>
 				<div class="formulario__grupo-input">
 					<input type="text" class="formulario__input" name="referencia__com" id="referencia__com"
-						placeholder="...">
+						placeholder="Ej: Casa de rejas al lado">
 				</div>
 			</div>
 
 
-
 			<!-- -------------------- ENVÍO -------------------- -->
-			<h2> Envío </h2>
+			<h4> <u> <b> <i> Envío </i> </b> </u> </h4>
 			<div></div>
 
 			<!-- Grupo: Calle -->
@@ -150,9 +148,8 @@
 			</div>
 
 
-
 			<!-- -------------------- RECIBIMIENTO -------------------- -->
-			<h2> Recibimiento </h2>
+			<h4> <u> <b> <i> Recibimiento </i> </b> </u> </h4>
 			<div></div>
 
 			<!-- Grupo: Tipo Recibimiento -->
@@ -178,21 +175,20 @@
 
 
 			<!-- -------------------- TOTAL A PAGAR -------------------- -->
-			<h2> Total a pagar: </h2>
-			<h2 id="total-pago"> $ - </h2>
-
+			<h4> <u> <b> <i> Total a pagar: </i> </b> </u> </h4>
+			<h4 id="total-pago"> $ - </h4>
 
 
 			<!-- -------------------- PAGO -------------------- -->
-			<h2> Pago </h2>
+			<h4> <u> <b> <i> Pago </i> </b> </u> </h4>
 			<div></div>
 
 			<!-- Grupo: Forma de Pago -->
 			<div class="formulario__grupo" id="grupo__formaDePago">
 				<label for="formaDePago" class="formulario__label">Forma de Pago</label>
 				<div class="formulario__grupo-comboBox">
-					<select name="Ciudad" class="formulario__input">
-						<option value="" disabled>Seleccione una opción</option>
+					<select name="formaPago" class="formulario__input" id="cboFormaPago">
+						<option value="SinSeleccionar" selected>Seleccione una opción</option>
 						<option value="Efectivo">Efectivo</option>
 						<option value="Credito/Debito">Tarjeta de Crédito/Débito</option>
 					</select>
@@ -201,57 +197,73 @@
 				<!-- <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>-->
 			</div>
 
+    	
 			<!-- Grupo: Monto, si elige como forma de pago efectivo -->
-			<div class="formulario__grupo" id="grupo__monto">
-				<label for="monto" class="formulario__label">Monto</label>
-				<div class="formulario__grupo-input">
-					<input type="number" class="formulario__input" name="monto" id="monto" placeholder="$">
-					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+			<div class="divEfectivo" id="divEfectivo">
+				<div class="formulario__grupo" id="grupo__monto">
+					<label for="monto" class="formulario__label">Monto</label>
+					<div class="formulario__grupo-input">
+						<input type="number" class="formulario__input" name="monto" id="monto" placeholder="$">
+						<i class="formulario__validacion-estado fas fa-times-circle"></i>
+					</div>
+					<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
 				</div>
-				<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
 			</div>
+			
+
 
 			<!-- Grupo: Nro de Tarjeta, si elige como forma de pago Credito/Debito -->
-			<div class="formulario__grupo" id="grupo__nroTarjeta">
-				<label for="nroTarjeta" class="formulario__label">Número de Tarjeta</label>
-				<div class="formulario__grupo-input">
-					<input type="number" class="formulario__input" name="nroTarjeta" id="nroTarjeta"
-						placeholder="Ej: 0000 1111 2222 3333">
-					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+			<div class="divNroTarjeta" id="divNroTarjeta">
+				<div class="formulario__grupo" id="grupo__nroTarjeta">
+					<label for="nroTarjetas" id="nroTarjetas" class="formulario__label">Número de Tarjeta</label>
+					<div class="formulario__grupo-input">
+						<input type="number" class="formulario__input" name="nroTarjeta" id="nroTarjeta"
+							placeholder="Ej: 0000 1111 2222 3333">
+						<i class="formulario__validacion-estado fas fa-times-circle"></i>
+					</div>
+					<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
 				</div>
-				<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
 			</div>
-
-			<!-- Grupo: Nombre y apellido del titular de la Tarjeta, si elige como forma de pago Credito/Debito -->
-			<div class="formulario__grupo" id="grupo__nombre_apellido_titular">
-				<label for="nombre_apellido_titular" class="formulario__label">Nombre y apellido del titular</label>
-				<div class="formulario__grupo-input">
-					<input type="name" class="formulario__input" name="nombre_apellido_titular"
-						id="nombre_apellido_titular" placeholder="Ej: Joaquin Manero">
-					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+	
+				<!-- Grupo: Nombre y apellido del titular de la Tarjeta, si elige como forma de pago Credito/Debito -->
+			<div class="divNomApeTitular" id="divNomApeTitular">
+				<div class="formulario__grupo" id="grupo__nombre_apellido_titular">
+					<label for="nombre_apellido_titular" class="formulario__label">Nombre y apellido del titular</label>
+					<div class="formulario__grupo-input">
+						<input type="name" class="formulario__input" name="nombre_apellido_titular"
+							id="nombre_apellido_titular" placeholder="Ej: Joaquin Manero">
+						<i class="formulario__validacion-estado fas fa-times-circle"></i>
+					</div>
+					<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
 				</div>
-				<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
 			</div>
-
-			<!-- Grupo: Fecha de vencimiento de la Tarjeta, si elige como forma de pago Credito/Debito -->
-			<div class="formulario__grupo" id="fechaVto">
-				<label for="fechaVto" class="formulario__label">Fecha de vencimiento</label>
-				<div class="formulario__grupo-input">
-					<input type="date" class="formulario__input" name="fechaVto" id="fechaVto">
-					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+	
+				<!-- Grupo: Fecha de vencimiento de la Tarjeta, si elige como forma de pago Credito/Debito -->
+			<div class="divFechaVto" id="divFechaVto">	
+				<div class="formulario__grupo" id="grupo__fechaVto">
+					<label for="fechaVto" class="formulario__label">Fecha de vencimiento</label>
+					<div class="formulario__grupo-input">
+						<input type="date" class="formulario__input" name="fechaVto" id="fechaVto">
+						<i class="formulario__validacion-estado fas fa-times-circle"></i>
+					</div>
+					<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
 				</div>
-				<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
 			</div>
-
-			<!-- Grupo: CVC de la Tarjeta, si elige como forma de pago Credito/Debito -->
-			<div class="formulario__grupo" id="CVC">
-				<label for="CVC" class="formulario__label">Código de seguridad (CVC)</label>
-				<div class="formulario__grupo-input">
-					<input type="number" class="formulario__input" name="CVC" id="CVC">
-					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+	
+				<!-- Grupo: CVC de la Tarjeta, si elige como forma de pago Credito/Debito -->
+			<div class="divCVC" id="divCVC">	
+				<div class="formulario__grupo" id="grupo__CVC">
+					<label for="CVC" class="formulario__label">Código de seguridad (CVC)</label>
+					<div class="formulario__grupo-input">
+						<input type="number" class="formulario__input" name="CVC" id="CVC">
+						<i class="formulario__validacion-estado fas fa-times-circle"></i>
+					</div>
+					<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
 				</div>
-				<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
 			</div>
+			
+			
+			
 
 			<!-- -------------------- FIN -------------------- -->
 
