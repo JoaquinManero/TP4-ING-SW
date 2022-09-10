@@ -11,6 +11,7 @@ const divNomApeTitular = document.querySelector("[class=divNomApeTitular]")
 const divFechaVto = document.querySelector("[class=divFechaVto]")
 const divCVC = document.querySelector("[class=divCVC]")
 const divFechaHora = document.querySelector("[class=divFechaHora]")
+const elemento = document.getElementById('hola');
 
 cboFormaPago.addEventListener("change", () => {
     if (cboFormaPago.value === "Efectivo") {
@@ -42,6 +43,7 @@ cboRecibimiento.addEventListener("change", () => {
 // Numero no vacío y texto
 // Ciudad seleccionada
 
+
 let btn_pedido = document.getElementById("pedido");
 btn_pedido.addEventListener("click", hacer_pedido);
 
@@ -55,6 +57,7 @@ function hacer_pedido () {
     if (validar_formaDePago()){
         console.log("hola")
     }
+    
 }
 
 function validar_domicilio(){
