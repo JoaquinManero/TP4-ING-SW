@@ -116,32 +116,39 @@
 			<div></div>
 
 			<!-- Grupo: Tipo Recibimiento -->
-			<div class="formulario__grupo" id="grupo__recibimiento">
-				<label for="recibimiento" class="formulario__label">Tipo Recibimiento</label>
-				<div class="formulario__grupo-comboBox">
-					<select name="recibimiento" id="cboRecibimiento" class="formulario__input">
-						<option value="" hidden selected disabled>Seleccione una opción</option>
-						<option value="antes-posible">Lo antes posible</option>
-						<option value="fecha-hora">Indicar fecha y hora</option>
-					</select>
+			<div id="divRecibimiento">
+				<div class="formulario__grupo" id="grupo__recibimiento">
+					<label for="recibimiento" class="formulario__label">Tipo Recibimiento</label>
+					<div class="formulario__grupo-comboBox">
+						<select name="recibimiento" id="cboRecibimiento" class="formulario__input">
+							<option value="" selected>Seleccione una opción</option>
+							<option value="antes-posible">Lo antes posible</option>
+							<option value="fecha-hora">Indicar fecha y hora</option>
+						</select>
+					</div>
+					<p class="formulario__input-error" id="error-recib">Por favor, seleccione una fecha y hora.</p>
 				</div>
-				<p class="formulario__input-error" id="error-recib">Seleccione un recibimiento</p>
 			</div>
 
 			<!-- Grupo: Fecha y Hora-->
-			<div class="formulario__grupo" id="fecha-hora-rec">
-				<label for="fecha-hora" class="formulario__label">Fecha y Hora</label>
-				<div class="formulario__grupo-input">
-					<input type="datetime-local" class="formulario__input" name="fecha-hora" id="fecha-hora">
+			<div id="divFechaHora" class="divFechaHora" >
+				<div class="formulario__grupo" id="fecha-hora-rec">
+					<label for="fecha-hora" class="formulario__label">Fecha y Hora</label>
+					<div class="formulario__grupo-input">
+						<input type="datetime-local" class="formulario__input" name="fecha-hora" id="fecha-hora">
+					</div>
+					<p class="formulario__input-error" id="error-fechaHora">Por favor, seleccione una fecha y hora.</p>
+
 				</div>
 			</div>
 
-
+			<div></div>
 
 			<!-- -------------------- TOTAL A PAGAR -------------------- -->
 			<h4> <u> <b> <i> Total a pagar: </i> </b> </u> </h4>
 			<h4 id="total-pago"> $ - </h4>
 
+			<div></div>
 
 			<!-- -------------------- PAGO -------------------- -->
 			<h4> <u> <b> <i> Pago </i> </b> </u> </h4>
@@ -152,13 +159,13 @@
 				<label for="formaDePago" class="formulario__label">Forma de Pago</label>
 				<div class="formulario__grupo-comboBox">
 					<select name="formaPago" class="formulario__input" id="cboFormaPago">
-						<option value="SinSeleccionar" selected>Seleccione una opción</option>
+						<option value="" selected>Seleccione una opción</option>
 						<option value="Efectivo">Efectivo</option>
 						<option value="Credito/Debito">Tarjeta de Crédito/Débito</option>
 					</select>
 					<i class="formulario__validacion-estado fas fa-times-circle"></i>
 				</div>
-				<!-- <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>-->
+				<p class="formulario__input-error" id="error-formaPago">Por favor, seleccione una forma de pago.</p>
 			</div>
 
 
@@ -170,7 +177,7 @@
 						<input type="number" class="formulario__input" name="monto" id="monto" placeholder="$">
 						<i class="formulario__validacion-estado fas fa-times-circle"></i>
 					</div>
-					<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
+					<p class="formulario__input-error" id="error-efectivo">Por favor, ingrese un monto válido.</p>
 				</div>
 			</div>
 
@@ -179,13 +186,13 @@
 			<!-- Grupo: Nro de Tarjeta, si elige como forma de pago Credito/Debito -->
 			<div class="divNroTarjeta" id="divNroTarjeta">
 				<div class="formulario__grupo" id="grupo__nroTarjeta">
-					<label for="nroTarjetas" id="nroTarjetas" class="formulario__label">Número de Tarjeta</label>
+					<label for="nroTarjeta" id="nroTarjeta" class="formulario__label">Número de Tarjeta</label>
 					<div class="formulario__grupo-input">
 						<input type="number" class="formulario__input" name="nroTarjeta" id="nroTarjeta"
 							placeholder="Ej: 0000 1111 2222 3333">
 						<i class="formulario__validacion-estado fas fa-times-circle"></i>
 					</div>
-					<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
+					<p class="formulario__input-error" id="error-numeroTarjeta">Por favor, ingrese un número de tarjeta.</p>
 				</div>
 			</div>
 
@@ -198,7 +205,7 @@
 							id="nombre_apellido_titular" placeholder="Ej: Joaquin Manero">
 						<i class="formulario__validacion-estado fas fa-times-circle"></i>
 					</div>
-					<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
+					<p class="formulario__input-error" id="error-nomApeTit">Por favor, ingrese un nombre y apellido.</p>
 				</div>
 			</div>
 
@@ -207,10 +214,10 @@
 				<div class="formulario__grupo" id="grupo__fechaVto">
 					<label for="fechaVto" class="formulario__label">Fecha de vencimiento</label>
 					<div class="formulario__grupo-input">
-						<input type="date" class="formulario__input" name="fechaVto" id="fechaVto">
+						<input type="month" class="formulario__input" name="fechaVto" id="fechaVto">
 						<i class="formulario__validacion-estado fas fa-times-circle"></i>
 					</div>
-					<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
+					<p class="formulario__input-error" id="error-fechaVto">Por favor, ingrese una fecha correcta.</p>
 				</div>
 			</div>
 
@@ -222,7 +229,7 @@
 						<input type="number" class="formulario__input" name="CVC" id="CVC">
 						<i class="formulario__validacion-estado fas fa-times-circle"></i>
 					</div>
-					<!-- <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>-->
+					<p class="formulario__input-error" id="error-CVC">Por favor, ingrese un CVC valido.</p>
 				</div>
 			</div>
 
