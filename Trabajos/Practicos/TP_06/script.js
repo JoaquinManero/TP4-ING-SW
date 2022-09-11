@@ -49,32 +49,18 @@ let btn_pedido = document.getElementById("pedido");
 btn_pedido.addEventListener("click", Pedido);
 
 function Pedido () {
-    if (validarTodo()){
-        console.log("hola");
-    }
+    if (validaciones()){
+        redireccionar();
+    };
+    
 }
-//---------------------------------------------------------
-//function hacer_pedido () {
-    //if (validar_domicilio()){
-      //  console.log("hola")
-    //}
-    //if (validar_recibimiento()){
-      //  console.log("hola")
-    //}
-    //if (validar_formaDePago()){
-      //  console.log("hola")
-        
-    //}}
-//}
 
 function redireccionar(){
     location.href = "indexPantallaCarga.html"
 }
 
-//---------------------------------------------------------
-//Validaciones.
 
-function validarTodo(){
+function validaciones(){
     let calle = document.getElementById("calle");
     let nro_calle = document.getElementById("numeroCalle");
     let ciudad = document.getElementById("cboCiudad");
@@ -96,83 +82,16 @@ function validarTodo(){
     let error_fechaVto = document.getElementById("error-fechaVto");
     let error_codigo = document.getElementById("error-CVC");
     let error_efectivos = document.getElementById("error-efectivo");
-
-
-    if (calle.value != ""){
-        error_calle.style.display = "none";
-        if (nro_calle.value != ""){
-            error_nro_calle.style.display = "none";
-            if (ciudad.value != ""){
-                error_ciudad.style.display = "none";
-                if (recib.value != ""){
-                    error_recib.style.display = "none";
-                    if (fecha_hora.value != ""){
-                        error_fechaHora.style.display = "none";
-                        if (cboFormaDePagos.value != ""){
-                            error_formaPago.style.display = "none";
-                            if (monto.value != ""){
-                                error_efectivos.style.display ="none";
-                                redireccionar();
-                            }
-                            if (nroTarjeta.value != ""){
-                                error_nroTarjeta.style.display = "none";
-                                if (nomApeTitular.value != ""){
-                                    error_nomApeTit.style.display = "none";
-                                    if (fechaVto.value != ""){
-                                        error_fechaVto.style.display = "none";
-                                        if (codigo.value != ""){
-                                            error_codigo.style.display = "none";
-                                            redireccionar();
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    if (calle.value == ""){
-        error_calle.style.display = "block";
-        if (nro_calle.value == ""){
-            error_nro_calle.style.display = "block";
-            if (ciudad.value == ""){
-                error_ciudad.style.display = "block";
-                if (recib.value == ""){
-                    error_recib.style.display = "block";
-                    if (fecha_hora.style.display == ""){
-                        error_fechaHora.style.display = "block";
-                        if (validar_formaDePago()){
-                            redireccionar();
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-
-function validar_domicilio(){
-    let calle = document.getElementById("calle");
-    let nro_calle = document.getElementById("numeroCalle");
-    let ciudad = document.getElementById("cboCiudad");
-
-    // Error Calle
-
-    let error_calle = document.getElementById("error-calle");
+    
+    //Validacion de Domicilio
     if (calle.value == "" ||  !isNaN(calle.value)) {
         error_calle.style.display = "block";
         return false;   
     }
     else    {
         error_calle.style.display = "none";
-    }
-    
+    } 
 
-    // Error Nro Calle
-    let error_nro_calle = document.getElementById("error-nro-calle");
     if (nro_calle.value == ""){
         error_nro_calle.style.display = "block";
         return false;
@@ -181,8 +100,6 @@ function validar_domicilio(){
         error_nro_calle.style.display = "none";
     }
 
-    // Error Ciudad
-    let error_ciudad = document.getElementById("error-ciudad");
     if (ciudad.value == ""){
         error_ciudad.style.display = "block";
         return false;
@@ -190,42 +107,243 @@ function validar_domicilio(){
     else {
         error_ciudad.style.display = "none";
     }
-
-}
-
-
-function validar_recibimiento(){
-    let recib = document.getElementById("cboRecibimiento");
-    let fecha_hora = document.getElementById("fecha-hora");
-    var hoy = new Date()
-    //var fechas = hoy.getFullYear() + '-' + ('0' + (hoy.getMonth() + 1)).slice(-2) + '-' + ('0' + hoy.getDate()).slice(-2) ;
-    var fechas = ('0' + hoy.getDate()).slice(-2) + '/' +('0' + (hoy.getMonth() + 1)).slice(-2) + '/' + hoy.getFullYear()
-    var hora = ('0' + hoy.getHours()).slice(-2) + ':' + ('0' + hoy.getMinutes()).slice(-2);
-
-    var fecha_hora_hoy = fechas + ' ' + hora;
-    console.log(fecha_hora)
-    //document.getElementById('fecha-hora').value = fecha_hora;
-
-    // Error Recibimiento
-    let error_recib = document.getElementById("error-recib");
+    //Validacion de recibimiento
     if (recib.value == ""){
         error_recib.style.display = "block";
         return false;
     }
-    else {
+    else{
         error_recib.style.display = "none";
+        if (recib.value == "fecha-hora"){
+            error_recib.style.display = "block";
+            if (fecha_hora.value == ""){
+                error_fechaHora.style.display = "block";
+                error_recib.style.display = "none";
+                return false;
+            }else{
+                error_fechaHora.style.display = "none";
+                error_recib.style.display = "none";
+            }
+        }
+        if (recib.value == "antes-posible"){
+            error_recib.style.display = "none";
+            if (cboFormaDePagos.value == ""){
+                error_formaPago.style.display = "block";
+                if (nroTarjeta.value == ""){
+                    error_nroTarjeta.style.display ="block";
+                    if ((nroTarjeta.value == "") && (nomApeTitular.value == "")){
+                        error_nroTarjeta.style.display ="block";
+                        error_nomApeTit.style.display = "block";
+                        if ((nroTarjeta.value == "") && (nomApeTitular.value == "") && (fechaVto.value == "")){
+                            error_nroTarjeta.style.display ="block";
+                            error_nomApeTit.style.display = "block";
+                            error_fechaVto.style.display = "block";
+                            if ((nroTarjeta.value == "") && (nomApeTitular.value == "") && (fechaVto.value == "") && (codigo.value == "")){
+                                error_nroTarjeta.style.display ="block";
+                                error_nomApeTit.style.display = "block";
+                                error_fechaVto.style.display = "block";
+                                error_codigo.style.display = "block";
+                                return false
+                            }
+                            return false;
+                        }
+                        return false;
+                    }
+                }
+                return false;
+            }
+            else {
+                error_formaPago.style.display = "none";
+                if (nroTarjeta.value != ""){
+                    error_nroTarjeta.style.display = "none";
+                    if ((nroTarjeta.value != "") && (nomApeTitular.value != "")){
+                        error_nroTarjeta.style.display ="none";
+                        error_nomApeTit.style.display = "none";
+                        if ((nroTarjeta.value != "") && (nomApeTitular.value != "") && (fechaVto.value != "")){
+                            error_nroTarjeta.style.display ="none";
+                            error_nomApeTit.style.display = "none";
+                            error_fechaVto.style.display = "none";
+                            if ((nroTarjeta.value != "") && (nomApeTitular.value != "") && (fechaVto.value != "") && (codigo.value != "")){
+                                error_nroTarjeta.style.display ="none";
+                                error_nomApeTit.style.display = "none";
+                                error_fechaVto.style.display = "none";
+                                error_codigo.style.display = "none";
+                                redireccionar();
+                            }
+                        }
+                    }
+                }
+            
+            }
+        
+            if (cboFormaDePagos.value == "Credito/Debito"){
+                error_formaPago.style.display = "none";
+                if (nroTarjeta.value == ""){
+                    error_nroTarjeta.style.display ="block";
+                    if ((nroTarjeta.value == "") && (nomApeTitular.value == "")){
+                        error_nroTarjeta.style.display ="block";
+                        error_nomApeTit.style.display = "block";
+                        if ((nroTarjeta.value == "") && (nomApeTitular.value == "") && (fechaVto.value == "")){
+                            error_nroTarjeta.style.display ="block";
+                            error_nomApeTit.style.display = "block";
+                            error_fechaVto.style.display = "block";
+                            if ((nroTarjeta.value == "") && (nomApeTitular.value == "") && (fechaVto.value == "") && (codigo.value == "")){
+                                error_nroTarjeta.style.display ="block";
+                                error_nomApeTit.style.display = "block";
+                                error_fechaVto.style.display = "block";
+                                error_codigo.style.display = "block";
+                                return false
+                            }
+                            return false;
+                        }
+                        return false;
+                    }
+                }
+                return false;
+            }
+            else {
+                error_formaPago.style.display = "none";
+                if (nroTarjeta.value != ""){
+                    error_nroTarjeta.style.display = "none";
+                    if ((nroTarjeta.value != "") && (nomApeTitular.value != "")){
+                        error_nroTarjeta.style.display ="none";
+                        error_nomApeTit.style.display = "none";
+                        if ((nroTarjeta.value != "") && (nomApeTitular.value != "") && (fechaVto.value != "")){
+                            error_nroTarjeta.style.display ="none";
+                            error_nomApeTit.style.display = "none";
+                            error_fechaVto.style.display = "none";
+                            if ((nroTarjeta.value != "") && (nomApeTitular.value != "") && (fechaVto.value != "") && (codigo.value != "")){
+                                error_nroTarjeta.style.display ="none";
+                                error_nomApeTit.style.display = "none";
+                                error_fechaVto.style.display = "none";
+                                error_codigo.style.display = "none";
+                                redireccionar();
+                            }
+                        }
+                    }
+                }
+            }
+        
+            //Error monto
+            if (monto.value == ""){
+                error_efectivos.style.display = "block";
+                return false;
+            }
+            else {
+                error_efectivos.style.display = "none"
+                redireccionar();
+            }
+        }
     }
-    //Error fecha y hora
 
-    let error_fechaHora = document.getElementById("error-fechaHora")
-    if (fecha_hora_hoy <= fecha_hora){
-        error_fechaHora.style.display = "block";
+    //Validacion forma de pago
+    if (cboFormaDePagos.value == ""){
+        error_formaPago.style.display = "block";
+        if (nroTarjeta.value == ""){
+            error_nroTarjeta.style.display ="block";
+            if ((nroTarjeta.value == "") && (nomApeTitular.value == "")){
+                error_nroTarjeta.style.display ="block";
+                error_nomApeTit.style.display = "block";
+                if ((nroTarjeta.value == "") && (nomApeTitular.value == "") && (fechaVto.value == "")){
+                    error_nroTarjeta.style.display ="block";
+                    error_nomApeTit.style.display = "block";
+                    error_fechaVto.style.display = "block";
+                    if ((nroTarjeta.value == "") && (nomApeTitular.value == "") && (fechaVto.value == "") && (codigo.value == "")){
+                        error_nroTarjeta.style.display ="block";
+                        error_nomApeTit.style.display = "block";
+                        error_fechaVto.style.display = "block";
+                        error_codigo.style.display = "block";
+                        return false
+                    }
+                    return false;
+                }
+                return false;
+            }
+        }
         return false;
     }
-    if (fecha_hora_hoy > fecha_hora){
-        error_fechaHora.style.display = "none";
+    else {
+        error_formaPago.style.display = "none";
+        if (nroTarjeta.value != ""){
+            error_nroTarjeta.style.display = "none";
+            if ((nroTarjeta.value != "") && (nomApeTitular.value != "")){
+                error_nroTarjeta.style.display ="none";
+                error_nomApeTit.style.display = "none";
+                if ((nroTarjeta.value != "") && (nomApeTitular.value != "") && (fechaVto.value != "")){
+                    error_nroTarjeta.style.display ="none";
+                    error_nomApeTit.style.display = "none";
+                    error_fechaVto.style.display = "none";
+                    if ((nroTarjeta.value != "") && (nomApeTitular.value != "") && (fechaVto.value != "") && (codigo.value != "")){
+                        error_nroTarjeta.style.display ="none";
+                        error_nomApeTit.style.display = "none";
+                        error_fechaVto.style.display = "none";
+                        error_codigo.style.display = "none";
+                        redireccionar();
+                    }
+                }
+            }
+        }
+    }
+
+    if (cboFormaDePagos.value == "Credito/Debito"){
+        error_formaPago.style.display = "none";
+        if (nroTarjeta.value == ""){
+            error_nroTarjeta.style.display ="block";
+            if ((nroTarjeta.value == "") && (nomApeTitular.value == "")){
+                error_nroTarjeta.style.display ="block";
+                error_nomApeTit.style.display = "block";
+                if ((nroTarjeta.value == "") && (nomApeTitular.value == "") && (fechaVto.value == "")){
+                    error_nroTarjeta.style.display ="block";
+                    error_nomApeTit.style.display = "block";
+                    error_fechaVto.style.display = "block";
+                    if ((nroTarjeta.value == "") && (nomApeTitular.value == "") && (fechaVto.value == "") && (codigo.value == "")){
+                        error_nroTarjeta.style.display ="block";
+                        error_nomApeTit.style.display = "block";
+                        error_fechaVto.style.display = "block";
+                        error_codigo.style.display = "block";
+                        return false
+                    }
+                    return false;
+                }
+                return false;
+            }
+        }
+        return false;
+    }
+    else {
+        error_formaPago.style.display = "none";
+        if (nroTarjeta.value != ""){
+            error_nroTarjeta.style.display = "none";
+            if ((nroTarjeta.value != "") && (nomApeTitular.value != "")){
+                error_nroTarjeta.style.display ="none";
+                error_nomApeTit.style.display = "none";
+                if ((nroTarjeta.value != "") && (nomApeTitular.value != "") && (fechaVto.value != "")){
+                    error_nroTarjeta.style.display ="none";
+                    error_nomApeTit.style.display = "none";
+                    error_fechaVto.style.display = "none";
+                    if ((nroTarjeta.value != "") && (nomApeTitular.value != "") && (fechaVto.value != "") && (codigo.value != "")){
+                        error_nroTarjeta.style.display ="none";
+                        error_nomApeTit.style.display = "none";
+                        error_fechaVto.style.display = "none";
+                        error_codigo.style.display = "none";
+                        redireccionar();
+                    }
+                }
+            }
+        }
+    }
+
+    //Error monto
+    if (monto.value == ""){
+        error_efectivos.style.display = "block";
+        return false;
+    }
+    else {
+        error_efectivos.style.display = "none";
+        redireccionar();
     }
 }
+
 
 function validar_formaDePago(){
     let cboFormaDePagos = document.getElementById("cboFormaPago");
@@ -348,6 +466,17 @@ function validar_formaDePago(){
     }
 
 }
+function validar_Tarjeta(){
+    var txtTarjeta = document.getElementById("nroTarjeta").value;
+    var cantCaracteres = txtTarjeta.length;
+    let error_nroTarjetaInvalido = document.getElementById("error-numeroTarjetaInvalido");
+
+    if (cantCaracteres < 16) {
+        error_nroTarjetaInvalido.style.display = "block"
+        document.getElementById("nroTarjeta").value = "";
+    }
+}
+
 
 
 
