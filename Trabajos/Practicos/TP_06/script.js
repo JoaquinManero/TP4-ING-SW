@@ -14,6 +14,35 @@ const divFechaHora = document.querySelector("[class=divFechaHora]")
 const elemento = document.getElementById('hola');
 
 //---------------------------------------------------------
+
+let resumen = document.querySelector(".resumen");
+let arrayJSON = JSON.parse(localStorage.getItem("productos"));
+let total = 0;
+
+for (det of arrayJSON){
+    detalle = document.createElement("div");
+    detalle.innerHTML = `<div class="row detalle">
+                            <div class="col-4">
+                                <img src="${det.img}" alt="">
+                            </div>
+                            <div class="col-4">
+                                <p>${det.nombre}</p>
+                            </div>
+                            <div class="col-4">
+                                <p>$${det.precio}</p>
+                            </div>
+                        </div>`;
+
+    total += parseInt(det.precio);
+    resumen.append(detalle);
+}
+
+let total_pago = document.querySelector("#total-pago");
+total_pago.innerHTML = "$"+total;
+
+
+
+
 //Ocultar y mostrar directorio.
 cboFormaPago.addEventListener("change", () => {
     if (cboFormaPago.value === "Efectivo") {
@@ -36,10 +65,10 @@ cboFormaPago.addEventListener("change", () => {
 //Ocultar y mostrar directorio.
 cboRecibimiento.addEventListener("change", () => {
     if (cboRecibimiento.value === "antes-posible"){
-        divFechaHora.style.display = "none";
+        divFechaHora.style.visibility = "hidden";
     }
     if (cboRecibimiento.value === "fecha-hora"){
-        divFechaHora.style.display = "block";
+        divFechaHora.style.visibility = "visible";
     }
 })
 //---------------------------------------------------------
@@ -60,7 +89,10 @@ function redireccionar(){
 }
 
 
+
+
 function validaciones(){
+
     let calle = document.getElementById("calle");
     let nro_calle = document.getElementById("numeroCalle");
     let ciudad = document.getElementById("cboCiudad");
@@ -71,6 +103,7 @@ function validaciones(){
     let nomApeTitular = document.getElementById("nombre_apellido_titular");
     let fechaVto = document.getElementById("fechaVto");
     let codigo = document.getElementById("CVC");
+
     let error_calle = document.getElementById("error-calle");
     let error_nro_calle = document.getElementById("error-nro-calle");
     let error_ciudad = document.getElementById("error-ciudad");
@@ -92,7 +125,7 @@ function validaciones(){
         error_calle.style.display = "none";
     } 
 
-    if (nro_calle.value == ""){
+    if (nro_calle.value == "" || nro_calle.value <= 0){
         error_nro_calle.style.display = "block";
         return false;
     }
@@ -107,6 +140,7 @@ function validaciones(){
     else {
         error_ciudad.style.display = "none";
     }
+
     //Validacion de recibimiento
     if (recib.value == ""){
         error_recib.style.display = "block";
@@ -114,8 +148,9 @@ function validaciones(){
     }
     else{
         error_recib.style.display = "none";
+        
         if (recib.value == "fecha-hora"){
-            error_recib.style.display = "block";
+            // error_recib.style.display = "block";
             if (fecha_hora.value == ""){
                 error_fechaHora.style.display = "block";
                 error_recib.style.display = "none";
@@ -125,8 +160,10 @@ function validaciones(){
                 error_recib.style.display = "none";
             }
         }
+
         if (recib.value == "antes-posible"){
             error_recib.style.display = "none";
+            
             if (cboFormaDePagos.value == ""){
                 error_formaPago.style.display = "block";
                 if (nroTarjeta.value == ""){
@@ -225,7 +262,7 @@ function validaciones(){
             }
         
             //Error monto
-            if (monto.value == ""){
+            if (monto.value == "" || monto.value <= 0){
                 error_efectivos.style.display = "block";
                 return false;
             }
@@ -334,7 +371,7 @@ function validaciones(){
     }
 
     //Error monto
-    if (monto.value == ""){
+    if (monto.value == "" || monto.value <= 0){
         error_efectivos.style.display = "block";
         return false;
     }
@@ -466,9 +503,10 @@ function validar_formaDePago(){
     }
 
 }
+
 function validar_Tarjeta(){
-    var txtTarjeta = document.getElementById("nroTarjeta").value;
-    var cantCaracteres = txtTarjeta.length;
+    let txtTarjeta = document.getElementById("nroTarjeta").value;
+    let cantCaracteres = txtTarjeta.length;
     let error_nroTarjetaInvalido = document.getElementById("error-numeroTarjetaInvalido");
 
     if (cantCaracteres < 16) {

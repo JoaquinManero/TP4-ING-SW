@@ -1,5 +1,6 @@
 * {
 	box-sizing: border-box;
+	font-family: 'Poppins';
 }
 
 body {
@@ -31,6 +32,7 @@ h2{
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 20px;
+	
 }
 
 
@@ -169,6 +171,40 @@ h2{
 
 .formulario__grupo-incorrecto .formulario__input {
 	border: 3px solid #bb2929;
+}
+
+.resumen{
+	background-color: rgb(184, 184, 184);
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	filter: drop-shadow(5px 5px 5px rgb(108, 108, 108));
+}
+
+.resumen img{
+	width: 150px;
+    aspect-ratio: 14/9;
+	border-radius: 5px;
+	filter: drop-shadow(2px 2px 5px rgb(108, 108, 108));
+	
+}
+
+.detalle{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 5px 0;
+}
+
+.detalle .col-4 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0;
+}
+
+.detalle .col-4 p{
+	margin: 0;
 }
 
 

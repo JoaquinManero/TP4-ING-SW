@@ -1,0 +1,101 @@
+* {
+    font-family: 'Poppins';
+}
+
+.img-carrito img {
+    width: 80%;
+    aspect-ratio: 14/9;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid rgb(77, 77, 77);
+}
+
+.container-fluid {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(222, 184, 135, 1) 35%, rgba(4, 99, 119, 1) 100%);
+    padding: 5% 10%;
+}
+
+.card {
+    filter: drop-shadow(5px 5px 5px rgb(77, 77, 77));
+    height: 100%;
+    filter: opacity(90%);
+}
+
+li {
+    text-align: start;
+}
+
+#carrito {
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+
+    display: flex;
+}
+
+#carrito .minmax {
+    height: 100%;
+}
+
+.visual-carrito {
+    display: none;
+    width: 500px;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(347deg, rgba(2, 0, 36, 1) 0%, rgba(222, 184, 135, 1) 51%, rgba(4, 99, 119, 1) 100%);
+
+}
+
+h2{
+    margin: 20px 0;
+    text-align: center;
+    
+}
+
+em {
+    font-style: normal;
+}
+
+.fila{
+    display: grid;
+    grid-template-rows: repeat(1, 100px); 
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.fila div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fila div p{
+    margin: 0;
+}
+
+.fila img,
+.filabase img {
+    width: 130px;
+    aspect-ratio: 14/9;
+    border-radius: 3px;
+    filter: drop-shadow(1px 1px 3px black);
+}
+
+.comprar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.filabase{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.filabase div p{
+    margin: 0;
+    text-align: center;
+    font-weight: 700 ;
+}
