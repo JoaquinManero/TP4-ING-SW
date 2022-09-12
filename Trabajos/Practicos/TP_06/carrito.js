@@ -57,10 +57,15 @@ function comprar(){
         array_productos.push(prod);
     }
 
-    let arrayprodJSON = JSON.stringify(array_productos);
-    localStorage.setItem("productos", arrayprodJSON);
-
-    window.location.href = "index.html";
+    if (array_productos.length == 0){
+        alert("Agregue productos al carrito!")
+    }
+    else{
+        let arrayprodJSON = JSON.stringify(array_productos);
+        localStorage.setItem("productos", arrayprodJSON);
+        window.location.href = "index.html";
+    }
+    
 
 }
 
