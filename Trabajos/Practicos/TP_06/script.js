@@ -81,33 +81,75 @@ btn_pedido.addEventListener("click", Pedido);
 function Pedido() {
     console.log("Validaciones:", validaciones());
     if (validaciones()) {
-        redireccionar(); // hacer
+        pedir();
     };
 }
 
-function redireccionar() {
+function pedir() {
     
+    // Segun tipo de recibimiento
+    let fecha_hora;
+
+    // Según forma de pago
+    let monto;
+    let nro_tarjeta;
+    let nomape_titular;
+    let fechavto;
+    let codigoseg;
+
+    if (document.getElementById("cboRecibimiento").value == "antes-posible"){
+        fecha_hora = new Date();
+    }
+    else{
+        fecha_hora = new Date(document.getElementById("fecha-hora").value);
+    }
+
+    if (document.getElementById("cboFormaPago").value == "Efectivo"){
+        monto = parseInt(document.getElementById("monto").value);
+        nro_tarjeta = "";
+        nomape_titular = "";
+        fechavto = "";
+        codigoseg = "";
+    }
+    else{
+        monto = total;
+        nro_tarjeta = document.getElementById("nroTarjeta").value;
+        nomape_titular = document.getElementById("nombre_apellido_titular").value;
+        fechavto = document.getElementById("fechaVto").value;
+        codigoseg = document.getElementById("CVC").value;
+    }
+
+    
+
     let pedido = {
         productos: arrayJSON,
         calle: document.getElementById("calle").value,
         nrocalle: document.getElementById("numeroCalle").value,
         ciudad: document.getElementById("cboCiudad").value,
-        // referencia
+        referencia: document.getElementById("referencia").value,
         recibimiento: document.getElementById("cboRecibimiento").value,
-        // que guardo si es antes posible
-        // que guardo si es fecha y hora
+        fechahora: fecha_hora,
         total: total,
-        formapago: document.getElementById("cboFormaPago").value
-        // que guardo si es efectivo
-        // que guardo si es tarjeta
+        formapago: document.getElementById("cboFormaPago").value,
+        monto: monto,
+        nrotarjeta: nro_tarjeta,
+        titular: nomape_titular,
+        fechavto: fechavto,
+        cvc: codigoseg
     }
 
-    console.log(pedido);
+    let productosRJS = JSON.parse(localStorage.getItem("pedidos"));
+    if (productosRJS != null){
+        productosRJS.push(pedido);
+        localStorage.setItem("pedidos", JSON.stringify(productosRJS));
+    }
+    else{
+        let pedidos = [];
+        pedidos.push(pedido);
+        localStorage.setItem("pedidos", JSON.stringify(pedidos));
+    }
 
-    let pedidoJSON = JSON.stringify(pedido);
-    localStorage.setItem("pedido", pedidoJSON);
-
-    location.href = "indexPantallaCarga.html"
+    location.href = "indexPantallaCarga.html";
 }
 
 //---------------------------------------------------------
@@ -188,7 +230,7 @@ function validaciones() {
         return false;
     }
     else {
-        error_fechaHora.style.display = "none"; // CON FECHA Y HORA
+        error_fechaHora.style.display = "none"; 
     }
 
 
