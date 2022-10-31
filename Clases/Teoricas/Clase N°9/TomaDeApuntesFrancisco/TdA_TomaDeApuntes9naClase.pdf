@@ -1,0 +1,137 @@
+
+Kanban
+
+
+
+Es un **marco de trabajo** (como Scrum para Agile)
+
+- kanban (minúsculas) → Tarjeta de señal
+    
+    Señal que nos permite conocer cual es el estado en el cual se encuentra un proceso
+    
+    El vaso de Starbucks es un ejemplo de kanban; La caja de McDonalds es otro.
+    
+- Kanban (Mayús.) → Just in Time
+    
+    Minimizar los tiempos de almacenamiento → desperdicios
+    
+    Se basa en dos aspectos: Just in time y administración de colas
+    
+
+### Administración de Colas
+
+Se plantean colas, con disitntos flujos de trabajo y, por cada flujo/cola, la idea es que el trabajo fluya y no se “atasque” → La idea es evitar la generación de cuellos de botella.
+
+Aparecen los **tableros Kanban**
+
+**Busca visibilizar el trabajo, limitar el trabajo en progreso (WIP - Work In Progress), ayudar a que el trabajo fluya, hacer explícitas las políticas y tratar de mejorar colaborativamente.**
+
+El WIP busca definir la máxima cantidad de piezas de trabajo que puedo tener asignadas en una cola → Mas de esa cantidad no se adminte. Esto busca evitar sobrecargas y atascos (cuellos de botella).
+
+---
+
+El método Kanban es un enfoque para la **gestión de cambio**, no es un **proceso** de desarollo de SW o una metodologia de administración de proyectos. Es un **método** para introducir cambios en un proceso de desarrollo de SW.
+
+Kanban  busca definir el valor desde la perspectiva del cliente, busca identificar y eliminar el desperdicio, trata de identificar y eliminar las barreras de flujo y apunta a una mejora continua. Filosofía Lean
+
+### Kanban en el desarrollo de SW
+
+- Fomenta la **evolucíon gradual de los procesos existentes** → Es decir, al aplicar kanban sobre un proceso existente, tomo este y lo trato de mejorar. No es como en Scrum en donde se desecha el proceso existente y se busca crear otro. Esta es una de las razones por las cuales Lean gana popularidad, ya que si tengo un proceso en uso hace mucho tiempo, parece ilógico desecharlo de un dia para el otro porque el framework así lo dice (scrum). Lean es un poco mas amigable desde esta perspectiva.
+    
+    ***“Kanban no pide una revolucion (como scrum si), sino que fomenta el cambio gradual”***
+    
+- El cimiento/base de Lean es sencillo → Limitar el trabajo en progreso (WIP)
+- Se trabaja con la filosofía de PULL en vez de PUSH. Es decir, busco el trabajo a realizar una vez finalizado el anterior, en contraposición al PUSH en donde se me va dejando trabajo para realizar como una pila, la cual crece y crece.
+- Requiere una actitud mas proactiva y autosuficiente → Busco el trabajo, no me lo dan
+    
+    “Hay que movilizarse”
+    
+    Eso sí, no todos quieren aplicar esta actitud ya que la opuesta es mas “cómoda” (me dicen qué hacer, cuándo, cómo, etc.)
+    
+- El kanban (tarjeta) representa una señal para indicar que el nuevo trabajo puede ser **“tirado” (de PULL no de tirar a la basura)**
+
+### ¿Cómo Aplicar Kanban?
+
+1. Visualizar el flujo de trabajo
+    1. Para ello debemos dividir el trabajo en piezas manejables
+        1. Las User Stories son buenas para esto
+        2. Otras alternativas:
+            
+        
+        *Recordar que kanban no se utiliza para la gestión de proyectos*
+        
+    2. Ahora, para visualizar tal flujo, usamos nombres en las columnas (del tablero) para ilustrar dónde esta cada ítem/pieza de trabajo
+    3. Luego se distribuyen tales piezas/ítems en las distintas columnas (segun corresponda).
+    El trabajo fluye de izquierda a derecha
+        
+        - Tendremos **colas de trabajo y colas de acumulación**. En las últimas se “deposita” el trabajo finalizado  para que alguien de la actividad siguiente lo tome para continuar → Hace Pull. Si no se utilizaran las colas de acumulación, estariamos aplicando una metologia PUSH, ya que una vez finalizado el trabajo de una actividad, quien lo haya realizado se lo entregaría al quien se haga cargo en la actividad siguiente y esto no es lo que buscamos al aplicar la metodologia PULL
+        - las colas de WIP se suelen definir sobre las colas de trabajo, sin embargo en algunos casos tambien son definidos sobre las columnas de acumulacion. 
+        No puedo tener  en  una cola mas piezas de las que define el WIP¨.
+    4. Limitar el WIP, asignando límites explícitos sobre cuántos ítems pueden haber en progreso en cada estado de flujo de trabajo (en cada columna/cola)
+        
+
+        
+
+A veces, la asignación de tareas se refleja graficamente con la asignacion de un avatar o con alguna identificación (pero debe ser visual).
+
+
+
+# Métricas
+
+---
+
+*Una métrica es un número (una referencia cuantitativa)*
+
+
+
+## En el Enfoque Tradicional
+
+En enfoques tradicionales utilizamos procesos definidos y que no sean empíricos (Cascada/PUD/…). En esta gestión tradicional de proyectos hay aspectos clave, la triple restricción (Costo - Alcance - Tiempo).
+
+Entonces, las métricas en este enfoque apuntan a darnos herramientas para gestionar esta triple restricción. Tales métricas se dividen en métricas de proceso, de proyecto y de producto (a esta clasificación tambien se la conoce como *“El dominio de las métricas del enfoque tradicional”*).
+
+### Métricas de Proyecto
+
+---
+
+Tendremos métricas que nos permitan monitorear y controlar el proyecto que estamos gestionando.
+
+Para darnos cuenta que estamos ante una métrica de proyecto, la misma deberia revelar información que nos permita definir acciones correctivas sobre lo que está pasando en el proyecto.
+
+- *“Quiero poder comparar el trabajo planificado a este momento vs el trabajo real que se ha hecho.”( para conocer si estamos atrasados/adelantados/ok)*
+
+Las métricas que aplican para medir el proyecto, pueden llevarse al dominio de procesos
+
+### Métricas de Proceso
+
+---
+
+Utilizan una métrica de proyecto, pero intentando despersonalizarla y hacerla organizacional para poder evaluar el proceso en cuestión.
+
+- *“De los proyectos que se ejecutaron en los ultimos dos años ¿cuál es el porcentaje de proyectos que han tenido desvios en tiempo calendario?”*
+
+Permite determinar cual es la “Salud” del procesos.
+
+### Métricas de Producto
+
+---
+
+Esta relacionada con los aspectos concretos que quiera medir del producto de SW
+
+- Densisdad/cantidad de defectos
+
+### Métricas Básicas para un proyecto de SW
+
+---
+
+- **Tamaño del Producto** → Métrica de producto (dominio)
+    
+    Mide el tamaño del producto de SW a construir
+    
+    Se puede medir por:
+    
+    - Líneas de código (poco/nada útil)
+    - CU por complejidad
+    - Cantidad de features
+    - Cantidad de Clases
+    - Cantidad de puntos de historia
