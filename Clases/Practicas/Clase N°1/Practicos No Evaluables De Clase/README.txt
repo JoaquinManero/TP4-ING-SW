@@ -1,0 +1,1 @@
+En este apartado, se suben ejercicios que se han realizado en las clases practicas que se fueron dictando a lo largo del año. Los mismos no han sido evaluados, pero de todas formas se suben adjuntos al repositorio.
